@@ -22,7 +22,7 @@
             </div>
       
         <fieldset>
-            <legend>分配权限 <a href="#" class="btn btn-default  pull-right"><i class="fa fa-plus"></i>添加</a></legend>
+            <legend>分配权限 <a ui-turn-on="select_permission" class="btn btn-default  pull-right"><i class="fa fa-plus"></i>添加</a></legend>
            
             <div class="container">
             <div class="row"> 
@@ -50,4 +50,8 @@
             <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
         </div>
     </form>
+
+     <div ui-content-for="modals">
+        <div ng-include src="'/app/system/role/_select_permissions.html'"></div>
+    </div>
 </div>

@@ -1,37 +1,36 @@
-<div class="modal" ui-state="select_student" ui-if="select_student">
+<div class="modal " ui-state="select_student" ui-if="select_student">
     <div class="modal-backdrop in"></div>
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal-dialog fullheight">
+        <div class="modal-content fullheight flexvertical">
             <div class="modal-header">
                 <button class="close" ui-turn-off="select_student">&times;</button>
                 <h4 class="modal-title">绑定学员</h4>
             </div>
-            <div class="modal-body">
-                <div class="section">
-                    <label>姓名（法名）：</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" ng-model="searchModel.search.allname" required ng-keypress="onEnter($event,loadStudents)">
-                        <a class="btn btn-default input-group-addon" ng-click="loadStudents(1)"><i class="fa fa-search"></i></a>
+            <div class="section">
+                <label>姓名（法名）：</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="searchModel.search.allname" required ng-keypress="onEnter($event,loadStudents)">
+                    <a class="btn btn-default input-group-addon" ng-click="loadStudents(1)"><i class="fa fa-search"></i></a>
+                </div>
+            </div>
+           <div class="header">
+                <div class="row">
+                    <div class="col-xs-1">
+                    </div>
+                    <div class="col-xs-4">
+                        班级
+                    </div>
+                    <div class="col-xs-4">
+                        姓名
+                    </div>
+                    <div>
+                        法名
                     </div>
                 </div>
-                <div class="section" style="position:relative;height:100%;">
-                    <div class="scrollable">
-                        <div class="scrollable-header">
-                            <div class="list-group-item row">
-                                <div class="col-xs-1">
-                                </div>
-                                <div class="col-xs-4">
-                                    班级
-                                </div>
-                                <div class="col-xs-4">
-                                    姓名
-                                </div>
-                                <div>
-                                    法名
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="list-group scrollable-content">
+            </div>
+            <div class="modal-body" style="flex:1">
+                    <div class="container scrollable">
+                        <ul class="list-group userlist scrollable-content">
                             <li ng-repeat="  s in searchModel.models" class="list-group-item row">
                                 <div class="col-xs-1">
                                     <input type="radio" name="select_student_radio" ng-model="searchModel.student" ng-value="s">
@@ -48,7 +47,6 @@
                             </li>
                         </ul>
                     </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button ui-turn-off="select_student" class="btn btn-default">取消</button>
