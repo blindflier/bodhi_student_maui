@@ -1,0 +1,23 @@
+
+<nav ng-if="total>1" class="pull-right">
+  <ul class="pagination">
+    <li>
+      <a ng-click="onpage({page:1})" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+       <li  ng-repeat="p in pages track by $index" class="item" 
+        ng-class="{disabled: p=='...' ,active: p==current }" 
+       >
+            <a  ng-click="onpage({page:p})">{{p}}</a>
+         </li>
+
+ 
+    <li>
+      <a ng-click="onpage({page:total})" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

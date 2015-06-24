@@ -1,0 +1,41 @@
+<div class="scrollable" ng-controller="SidebarCtrl">
+    <h1 class="scrollable-header app-name">南京修学点 <small>学员信息管理</small></h1>
+    <div class="scrollable-content" ui-state="accord">
+        <div class="list-group menu-level-1" ui-state="subaccord">
+            <div ng-repeat="m in menu">
+                <a class="list-group-item" ui-scope-context="m,ss" ui-set="{'accord':(m.state == ss.get('accord') ? '' : m.state) }" ui-class="{'menu-expanded':accord == m.state}">
+                <i ng-if="m.icon"  class="fa {{m.icon}}"></i>
+                          {{m.text}}
+                          <i class="fa pull-right" ui-scope-context="m" ui-class="{'fa-plus':accord!=m.state,'fa-minus':accord==m.state}"></i>
+                        </a>
+                <div ui-scope-context="m" ui-if="accord==m.state" class="menu-level-2">
+                    <div ng-repeat="m1 in m.children">
+                        <div ng-if="!hasSubMenu(m1)">
+                            <a class="list-group-item" ng-class="{active:isState(m1.state)}" ui-turn-off='uiSidebarLeft' ui-sref="{{m1.state}}">
+                                    &nbsp;&nbsp;&nbsp;
+   <i ng-if="m1.icon"  class="fa {{m1.icon}}"></i>
+                                    {{m1.text}}
+                                     <i class="fa fa-chevron-right pull-right" ></i>
+                                  </a>
+                        </div>
+                        <div ng-if="hasSubMenu(m1)">
+                            <a class="list-group-item" ui-scope-context="m1" ui-set="{'subaccord':(m1.state == ss.get('subaccord') ? '' : m1.state) }">
+                                    &nbsp;&nbsp;&nbsp;
+ <i ng-if="m1.icon"  class="fa {{m1.icon}}"></i>
+                                    {{m1.text}}
+                                     <i class="fa  pull-right" ui-scope-context="m1" ui-class="{'fa-plus':subaccord!=m1.state,'fa-minus':subaccord==m1.state}" ></i>
+                            </a>
+                            <div ui-scope-context="m1" ui-if="subaccord==m1.state" class="menu-level-3">
+                                <div ng-repeat="m2 in m1.children">
+                                    <a class="list-group-item" ui-turn-off='uiSidebarLeft' ui-scope-context="m2" ui-sref="{{m2.state}}" ng-class="{active:isState(m2.state)}"> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+ <i ng-if="m2.icon"  class="fa {{m2.icon}}"></i>
+                                    {{m2.text}}<i class="fa fa-chevron-right pull-right" ></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

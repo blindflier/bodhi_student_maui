@@ -1,0 +1,81 @@
+<!doctype html>
+<html ng-app="bodhiStudentAui">
+
+<head>
+    <meta charset="utf-8">
+    <title>南京修学点学员信息管理系统</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <link rel="stylesheet" href="app/vendor.css">
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+
+<body ng-controller="AppCtrl">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Sidebars -->
+    <div ng-if="!isLoginState()" class="sidebar sidebar-left">
+        <div ng-include="'app/sidebar/sidebar.html'"></div>
+    </div>
+
+    <div class="app">
+        <div class="navbar navbar-app navbar-absolute-top" ng-if="!isLoginState()">
+            <div class="navbar-brand navbar-brand-center">
+            </div>
+            <div class="btn-group pull-left">
+                <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
+                    <i class="fa fa-bars"></i> 菜单
+                </div>
+            </div>
+            <div class="btn-group pull-right" ui-yield-to="navbarAction">
+                <div class="btn" ng-click="logout()">
+                    <i class="fa fa-user"></i><span ng-bind="user.username"></span> 退出登录
+                </div>
+            </div>
+        </div>
+        <!-- App body -->
+
+        <div class='app-body'>
+            <div class='app-content'>
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+    <div ui-yield-to="modals"></div>
+    <!-- ~ .app -->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+    // (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    // function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    // e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    // e.src='//www.google-analytics.com/analytics.js';
+    // r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    // ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+</body>
+
+</html>

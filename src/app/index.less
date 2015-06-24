@@ -1,0 +1,48 @@
+.app{background: #FFF}
+
+
+.modal-dialog{margin:auto;}
+
+@media (max-width: 768px) { 
+  .modal-dialog{
+    width:90%;
+  }
+}
+@media (min-width: 768px) { 
+  .modal-dialog{
+    width:50%;
+  }
+}
+.top100{top:100px}
+.mt10{margin-top: 10px !important}
+.mb10{margin-bottom: 10px !important}
+
+.w25p{width:25%}
+.w20p{width:20%}
+.w15p{width:15%}
+
+.message-box{
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+.message-box .header{
+  font-size:1.1em;
+  font-color:#ccc;
+}
+.message-box.ng-hide{
+  opacity:0
+}
+
+
+.myanimate.ng-enter,
+.myanimate.ng-move,
+.myanimate.ng-leave {
+  -webkit-transition:0s linear all !important;
+  transition: 0s linear all !important;
+}
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+
+// injector
+// endinjector

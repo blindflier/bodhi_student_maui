@@ -1,0 +1,53 @@
+<div class="container scrollable">
+    <form name="roleform" class="form mt10 scrollable-content" method="post" ng-submit="submitPermission()">
+        <h3>{{header}}</h3>
+        <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
+            <button type="button" class="close" ng-click="server.show=false">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="header">
+                {{server.msgHeader}}
+            </div>
+            <p>{{server.msgBody}}</p>
+        </div>
+  
+        
+            <div class="form-group">
+                <label>名称<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" ng-model="model.name" required>
+            </div>
+            <div class="form-group" >
+                <label>描述</label>
+                <input type="text" class="form-control" ng-model="model.desc">
+            </div>
+      
+        <fieldset>
+            <legend>分配权限 <a href="#" class="btn btn-default  pull-right"><i class="fa fa-plus"></i>添加</a></legend>
+           
+            <div class="container">
+            <div class="row"> 
+                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.users">
+                <a class="btn  btn-block btn-info ">
+                    {{u.username}} <i class="fa fa-remove pull-right"></i></a>  
+                </div>
+            </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>分配用户 <a href="#" class="btn btn-default pull-right"><i class="fa fa-plus"></i>添加</a></legend>
+           
+            <div class="container">
+            <div class="row"> 
+                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.users">
+                <a class="btn  btn-block btn-info ">
+                    {{u.username}} <i class="fa fa-remove pull-right"></i></a>  
+                </div>
+            </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <input type="submit" ng-disabled="roleform.$invalid" class="btn btn-primary btn-block">
+            <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,70 @@
+<div class="container scrollable">
+    <form name="gradeform" class="form mt10 scrollable-content" method="post" ng-submit="submit()">
+        <h3>{{header}}</h3>
+        <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
+            <button type="button" class="close" ng-click="server.show=false">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="header">
+                {{server.msgHeader}}
+            </div>
+            <p>{{server.msgBody}}</p>
+        </div>
+        <div class="form-group">
+            <label>修学点<span class="text-danger">*</span></label>
+            <select name="city" class="form-control" ng-model="model.city" ng-options="c for c in cities" ng-change="loadGrades()">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>班级<span class="text-danger">*</span></label>
+            <select name="grade" class="form-control" ng-model="model.grade_id" ng-options="c.id as c.genre+c.seq for c in grades">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>学员ID<span class="text-danger">*</span></label>
+            <input class="form-control" name="studentid" ng-model="model.student_id" ng-pattern="idPattern" required>
+        </div>
+        <div class="form-group">
+            <label>姓名<span class="text-danger">*</span></label>
+            <input class="form-control" ng-model="model.name" required>
+        </div>
+        <div class="form-group">
+            <label>性别<span class="text-danger">*</span></label>
+            <select class="form-control" ng-model="model.gender" ng-options="g.val as g.lbl for g in genders" required>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>法名</label>
+            <input class="form-control" ng-model="model.bud_name">
+        </div>
+        <div class="form-group">
+            <label>电话</label>
+            <input class="form-control" ng-model="model.phone">
+        </div>
+        <div class="form-group">
+            <label>邮箱</label>
+            <input class="form-control" ng-model="model.email">
+        </div>
+        <div class="form-group">
+            <label>生日</label>
+            <input type="date" class="form-control" ng-model="model.birthday  ">
+        </div>
+        <div class="form-group">
+            <label>教育程度</label>
+            <select class="form-control" ng-model="model.education" ng-options="e for e in educations">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>地址</label>
+            <input class="form-control" ng-model="model.address">
+        </div>
+        <div class="form-group">
+            <label>状态</label>
+            <select class="form-control" ng-model="model.state" ng-options="s.val as s.lbl for s in states"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" ng-disabled="gradeform.$invalid" class="btn btn-primary btn-block">
+            <a ui-sref="{{returnBack}}" class="btn btn-default btn-block">返回</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,30 @@
+
+<div class="loginbox row">
+    <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 ">
+         <div class="header">
+            <h1>菩提书院南京修学点</h1>
+            <p>学员信息管理系统</p>
+        <hr>
+        </div>
+        <form name="loginform" class="" method="post" ng-submit="login()">
+            <div class="form-group ">
+                <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" name="username" ng-model="data.username" required>
+                </div>
+            </div>
+            <div class="form-group input-group" ng-show="data.admin">
+                <span class="input-group-addon"><span class="fa fa-lock"></span></span>
+                <input type="password" class="form-control" name="password" ng-model="data.password" required>
+            </div>
+
+             <div class="form-group">
+                 <label>管理员</label>
+                 <ui-switch class="pull-right"  ng-model="data.admin"></ui-switch>
+             </div>
+           <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="登 录">
+            </div>
+        </form>
+    </div>
+</div>

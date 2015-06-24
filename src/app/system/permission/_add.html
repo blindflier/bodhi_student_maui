@@ -1,0 +1,28 @@
+<div class="container scrollable">
+    <form name="permissionform" class="form mt10 scrollable-content" method="post" ng-submit="submit()">
+        <h3>{{header}}</h3>
+        <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
+            <button type="button" class="close" ng-click="server.show=false">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="header">
+                {{server.msgHeader}}
+            </div>
+            <p>{{server.msgBody}}</p>
+        </div>
+        <div class="form-group">
+            <label>显示名称<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-model="model.name" required>
+        </div>
+        <div class="form-group">
+            <label>代码<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="code" ng-model="model.code" ng-pattern="codePattern" required>
+        </div>
+        <div class="form-group">
+            <label>描述</label>
+            <input type="text" class="form-control" ng-model="model.desc">
+        </div>
+        <input type="submit" ng-disabled="permissionform.$invalid" class="btn btn-primary btn-block">
+        <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
+    </form>
+</div>
