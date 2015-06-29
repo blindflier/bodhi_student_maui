@@ -1,26 +1,44 @@
 <div class="modal" ui-if='select_permission' ui-state='select_permission'>
-   <div class="modal-backdrop in"></div>
-  <div class="modal-dialog fullheight">
-    <div class="modal-content fullheight flexvertical">
-      <div class="modal-header">
-        <button class="close"
-                ui-turn-off="select_permission">&times;</button>
-        <h4 class="modal-title">分配权限</h4>
-      </div>
-      <div class="section">
+    <div class="modal-backdrop in"></div>
+    <div class="modal-dialog fullheight">
+        <div class="modal-content fullheight">
+            <div class="modal-header">
+                <button class="close" ui-turn-off="select_permission">&times;</button>
+                <h4 class="modal-title">分配权限</h4>
+            </div>
+            <div class="section">
                 <label>权限（代码）：</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="searchModel.search.allname" required ng-keypress="onEnter($event,loadStudents)">
-                    <a class="btn btn-default input-group-addon" ng-click="loadStudents(1)"><i class="fa fa-search"></i></a>
+          
+                    <input type="text" class="form-control" ng-model="permissionQuery" required>
+                 
+                
+            </div>
+            <div class="row-header">
+                <div class="row">
+              
+                    <div class="col-xs-4 col-xs-offset-1">
+                        名称
+                    </div>
+                    <div class="col-xs-4">
+                        代码
+                    </div>
                 </div>
             </div>
-      <div class="modal-body" style="flex:1">
-        <p>daddsa </p>
-      </div>
-      <div class="modal-footer">
-        <button ui-turn-off="select_permission" class="btn btn-default">关闭</button>
-        <button ui-turn-off="select_permission" class="btn btn-primary">提交</button>
-      </div>
+            <div class="modal-body" my-auto-height>
+                <ul class="list-group scrollable-content">
+                    <li ng-repeat="p in permissionModel.models | filter:permissionQuery" class="list-group-item row pointer">
+                        <div class="col-xs-1">
+                            <input type="checkbox" ng-model="p.checked">
+                        </div>
+                        <div class="col-xs-4">{{p.name}}</div>
+                        <div class="col-xs-4">{{p.code}}</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button ui-turn-off="select_permission" class="btn btn-default">关闭</button>
+                <button ui-turn-off="select_permission" class="btn btn-primary" ng-click="reloadPermissions()" >确定</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

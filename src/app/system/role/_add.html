@@ -1,5 +1,5 @@
 <div class="container scrollable">
-    <form name="roleform" class="form mt10 scrollable-content" method="post" ng-submit="submitPermission()">
+    <form name="roleform" class="form mt10 scrollable-content" method="post" ng-submit="submit()">
         <h3>{{header}}</h3>
         <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
             <button type="button" class="close" ng-click="server.show=false">
@@ -26,32 +26,33 @@
            
             <div class="container">
             <div class="row"> 
-                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.users">
+                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="p in model.permissions">
                 <a class="btn  btn-block btn-info ">
-                    {{u.username}} <i class="fa fa-remove pull-right"></i></a>  
+                    {{p.name}} <i ng-click="removePermission(p)" class="fa fa-remove pull-right"></i></a>  
                 </div>
             </div>
             </div>
         </fieldset>
         <fieldset>
-            <legend>分配用户 <a href="#" class="btn btn-default pull-right"><i class="fa fa-plus"></i>添加</a></legend>
+            <legend>分配用户 <a ui-turn-on="select_user" class="btn btn-default pull-right"><i class="fa fa-plus"></i>添加</a></legend>
            
             <div class="container">
             <div class="row"> 
                 <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.users">
                 <a class="btn  btn-block btn-info ">
-                    {{u.username}} <i class="fa fa-remove pull-right"></i></a>  
+                    {{u.username}} <i ng-click="removeUser(u)" class="fa fa-remove pull-right"></i></a>  
                 </div>
             </div>
             </div>
         </fieldset>
         <div class="form-group">
-            <input type="submit" ng-disabled="roleform.$invalid" class="btn btn-primary btn-block">
+            <input type="submit" ng-disabled="roleform.$invalid" class="btn btn-primary btn-block" value="提交">
             <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
         </div>
     </form>
 
      <div ui-content-for="modals">
         <div ng-include src="'/app/system/role/_select_permissions.html'"></div>
+         <div ng-include src="'/app/system/role/_select_users.html'"></div>
     </div>
 </div>

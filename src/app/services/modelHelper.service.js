@@ -66,7 +66,6 @@ angular.module('bodhiStudentAui')
                 scope.header = addLabel;
             }
             scope.model = angular.extend(scope.model || {}, stateModel || defaultData || {});
-
         };
 
         function loadModels(RestModelService, scope, doNotAssignModels) {

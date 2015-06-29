@@ -42,7 +42,9 @@ angular.module('bodhiStudentAui')
                 delete $scope.model.student_id;
                 delete $scope.model.student;
             } 
-
+            $scope.selectStudent = function(s){
+                $scope.searchModel.student = s;
+            }
             $scope.onBindStudent = function() {
                 $scope.model.student = $scope.searchModel.student || $scope.model.student;
                 if ($scope.model.student)

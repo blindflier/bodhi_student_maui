@@ -1,0 +1,42 @@
+<div class="modal" ui-if='select_user' ui-state='select_user'>
+    <div class="modal-backdrop in"></div>
+    <div class="modal-dialog fullheight">
+        <div class="modal-content fullheight">
+            <div class="modal-header">
+                <button class="close" ui-turn-off="select_user">&times;</button>
+                <h4 class="modal-title">分配用户</h4>
+            </div>
+            <div class="section">
+                <label>用户名：</label>
+          
+                    <input type="text" class="form-control" ng-model="userQuery" required>
+                 
+                
+            </div>
+            <div class="row-header">
+                <div class="row">
+              
+                    <div class="col-xs-offset-1">
+                        名称
+                    </div>
+            
+                </div>
+            </div>
+            <div class="modal-body" my-auto-height>
+                <ul class="list-group scrollable-content">
+                    <li ng-repeat="p in userModel.models | filter:userQuery" class="list-group-item row pointer">
+                        <div class="col-xs-1">
+                            <input type="checkbox" ng-model="p.checked">
+                        </div>
+                        <div>{{p.username}}</div>
+                
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button ui-turn-off="select_user" class="btn btn-default">关闭</button>
+                <button ui-turn-off="select_user" class="btn btn-primary" ng-click="reloadUsers()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>

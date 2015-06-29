@@ -33,8 +33,8 @@
              <i  class="fa fa-remove"></i></span>
             </div>
         </div>
-        <input type="submit" ng-disabled="userform.$invalid" class="btn btn-primary btn-block">
-        <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
+        <input type="submit" ng-disabled="userform.$invalid" class="btn btn-primary btn-block" value="确定">
+        <button ui-sref="^.all" class="btn btn-default btn-block">返回</button>
     </form>
     <div ui-content-for="modals">
         <div ng-include src="'/app/system/user/_select_student.html'"></div>

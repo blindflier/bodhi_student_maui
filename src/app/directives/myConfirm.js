@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bodhiStudentAui')
-.directive('myConfirm', ['$compile',function($compile){
+.directive('myConfirm', [function(){
 
   return {
     scope: {
