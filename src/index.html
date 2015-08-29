@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>南京修学点学员信息管理系统</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <link rel="stylesheet" href="app/vendor.css">
@@ -40,7 +40,7 @@
             </div>
             <div class="btn-group pull-right" ui-yield-to="navbarAction">
                 <div class="btn" ng-click="logout()">
-                    <i class="fa fa-user"></i><span ng-bind="user.username"></span> 退出登录
+                    <i class="fa fa-user"></i> <span>{{user.username}}</span> 退出登录
                 </div>
             </div>
         </div>

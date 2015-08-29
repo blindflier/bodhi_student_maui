@@ -1,0 +1,28 @@
+<div class="student-card" ng-repeat="c in models" class="myanimate">
+    <div class="header">
+        <span>{{c.grade | gradename}}</span>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">课程:</div>
+        <div class="col-xs-9">{{c.course | coursename}}</div>
+    </div>
+     <div class="row">
+        <div class="col-xs-3">时间:</div>
+        <div class="col-xs-9">{{c.holding_time | date : 'yyyy-MM-dd HH:mm'}}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">地点:</div>
+        <div class="col-xs-9">{{c.location}}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">备注:</div>
+        <div class="col-xs-9">{{c.memo}}</div>
+    </div>
+    <div class="row btn-group">
+        <a class="btn btn-sm btn-info" ng-click="onCheckin(c)"><i class="fa  fa-check-square-o"></i>考勤</a>
+        <a class="btn btn-sm btn-primary" ng-click="onUpdate(c)"><i class="fa  fa-edit"></i>编辑</a>
+        <a class="btn btn-sm btn-default" ng-click="destroyModel(c,'['+c.grade.city+c.grade.genre+c.grade.seq+']的共修['+c.course.subject+']',reloadModels)"><i class="fa fa-trash"></i>删除</a>
+    </div>
+
+</div>
+      <div><a class="btn btn-default btn-block" ng-if="currentPage !== pages" ng-click="loadNextPage()">载入下一页</a></div>

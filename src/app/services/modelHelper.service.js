@@ -82,6 +82,7 @@ angular.module('bodhiStudentAui')
                     offset: scope.limit > 0 ? scope.limit * (scope.currentPage - 1) : 0,
                     limit: scope.limit
                 };
+                //console.dir(scope);
                 angular.extend(option, scope.search);
 
 

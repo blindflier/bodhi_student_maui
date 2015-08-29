@@ -5,6 +5,7 @@ angular.module('bodhiStudentAui')
         'Student', 'RestHelper', 'AllCities', 'ModelHelper','Grade',
         function($scope, $timeout, $state, Student, RestHelper, AllCities, ModelHelper,Grade) {
 
+            
             $scope.$parent.currentState = $state.current.name;
        
              $scope.$parent.models = [];

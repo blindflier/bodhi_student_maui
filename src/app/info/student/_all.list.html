@@ -5,40 +5,40 @@
                 <i ng-if="c.state" class="fa fa-warning"></i>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-md-2">法名:</div>
-                <div class="col-xs-8 col-md-10">{{c.bud_name}}</div>
+                <div class="col-xs-2">法名:</div>
+                <div>{{c.bud_name}}</div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-md-2">学号:</div>
-                <div class="col-xs-8 col-md-10">{{c.student_id}}</div>
+                <div class="col-xs-2 ">学号:</div>
+                <div >{{c.student_id}}</div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-md-2">班级:</div>
-                <div class="col-xs-8 col-md-10">{{c.grade |grade }}</div>
+                <div class="col-xs-2">班级:</div>
+                <div>{{c.grade |gradename }}</div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-md-2">电话:</div>
-                <div class="col-xs-8 col-md-10">{{c.phone }}</div>
+                <div class="col-xs-2">电话:</div>
+                <div >{{c.phone }}</div>
             </div>
             <div class="row">
-                <div class="col-xs-4 col-md-2">邮箱:</div>
-                <div class="col-xs-8 col-md-10">{{c.email }}</div>
+                <div class="col-xs-2">邮箱:</div>
+                <div >{{c.email }}</div>
             </div>
             <div ng-if="c.showDetail" class="row">
-                <div class="col-xs-4 col-md-2">状态:</div>
-                <div class="col-xs-8 col-md-10">{{c.state | state }}</div>
+                <div class="col-xs-2">状态:</div>
+                <div >{{c.state | state }}</div>
             </div>
             <div ng-if="c.showDetail" class="row">
-                <div class="col-xs-4 col-md-2">教育:</div>
-                <div class="col-xs-8 col-md-10">{{c.education }}</div>
+                <div class="col-xs-2">教育:</div>
+                <div >{{c.education }}</div>
             </div>
             <div ng-if="c.showDetail" class="row">
-                <div class="col-xs-4 col-md-2">生日:</div>
-                <div class="col-xs-8 col-md-10">{{ c.birthday | date : 'yyyy-M-d' }}</div>
+                <div class="col-xs-2">生日:</div>
+                <div >{{ c.birthday | date : 'yyyy-M-d' }}</div>
             </div>
             <div ng-if="c.showDetail" class="row">
-                <div class="col-xs-4 col-md-2">地址:</div>
-                <div class="col-xs-8 col-md-10">{{c.address }}</div>
+                <div class="col-xs-2">地址:</div>
+                <div >{{c.address }}</div>
             </div>
             <div class="row btn-group">
                 <a class="btn btn-small btn-primary" ng-click="onUpdate(c)"><i class="fa  fa-edit"></i>编辑</a>

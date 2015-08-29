@@ -1,0 +1,36 @@
+<div class="container scrollable">
+    <div class="scrollable-header" style="padding:15px 15px 0 15px">
+        <div class="container text-center checkin-header">
+            <h3>{{gongxiu.grade | gradename }} 共修考勤</h3>
+            <h5>{{gongxiu.course | coursename}} </h5>
+            <h5>{{gongxiu.holding_time |date : 'yyyy年MM月dd日 HH:mm'}}</h5>
+        </div>
+        <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
+            <button type="button" class="close" ng-click="server.show=false">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="header">
+                {{server.msgHeader}}
+            </div>
+            <p>{{server.msgBody}}</p>
+        </div>
+    </div>
+    <div class="container scrollable-content">
+        <div class="gongxiu-card" ng-repeat="c in students" class="myanimate">
+            <div class="header row">
+                <span>{{c | student_name}}</span>
+            </div>
+            <div class="">
+                <div class="btn-group">
+                    <button ng-repeat="cc in checkinCategories" ng-class="getCheckinClass(c,cc)" ng-click="setCheckinCategory(c,cc)" class="btn btn-xs">{{cc}}</button>
+                    <button class="btn btn-xs btn-default" ng-click="c.showDetail=!c.showDetail"><i class="fa" ng-class="{'fa-angle-double-down':!c.showDetail,'fa-angle-double-up':c.showDetail}"></i></button>
+                </div>
+            </div>
+            <div class="row" ng-if="c.showDetail">
+                <input class="form-control"  ng-model="c.checkinMemo" placeholder="备注">
+            </div>
+        </div>
+        <input  ng-click="submit()" value="提交" class="btn btn-primary btn-block">
+        <a ui-sref="{{returnBack}}" class="btn btn-default btn-block">返回</a>
+    </div>
+</div>

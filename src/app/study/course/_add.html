@@ -1,0 +1,33 @@
+<div class="container scrollable">
+    <form name="courseform" class="form mt10 scrollable-content" method="post" ng-submit="submit()">
+        <h3>{{header}}</h3>
+        <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
+            <button type="button" class="close" ng-click="server.show=false">
+                <i class="fa fa-close"></i>
+            </button>
+            <div class="header">
+                {{server.msgHeader}}
+            </div>
+            <p>{{server.msgBody}}</p>
+        </div>
+        <div class="form-group">
+            <label>分类<span class="text-danger">*</span></label>
+           <select class="form-control" ng-model="model.category" ng-options="t for t in categories">
+        </select>
+        </div>
+        <div class="form-group">
+            <label>序号<span class="text-danger">*</span></label>
+            <input type="number" class="form-control" ng-model="model.seq" min="1" required>
+        </div>
+         <div class="form-group">
+            <label>主题<span class="text-danger">*</span></label>
+            <input type="text" class="form-control"  ng-model="model.subject" required>
+        </div>
+        <div class="form-group">
+            <label>备注</label>
+            <input type="text" class="form-control" ng-model="model.desc">
+        </div>
+        <input type="submit" ng-disabled="permissionform.$invalid" class="btn btn-primary btn-block">
+        <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
+    </form>
+</div>

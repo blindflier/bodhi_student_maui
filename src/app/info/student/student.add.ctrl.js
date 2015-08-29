@@ -3,9 +3,10 @@
 angular.module('bodhiStudentAui')
     .controller('StudentinfoAddCtrl', ['$scope', '$timeout', '$state', '$stateParams',
         'RestHelper', 'Student', 'Cities', 'ModelHelper', 'Grade', 'Genders', 'Educations', 'States',
+        'CurrentUser',
         function($scope, $timeout, $state, $stateParams, RestHelper, Student,
-            Cities, ModelHelper, Grade, Genders, Educations, States) {
-
+            Cities, ModelHelper, Grade, Genders, Educations, States,CurrentUser) {
+            $scope.isPhone = CurrentUser.isPhone();
             $scope.cities = Cities;
             $scope.genders = Genders;
             $scope.states = States;
@@ -16,7 +17,7 @@ angular.module('bodhiStudentAui')
                 city: '南京'
             };
        
-            $scope.returnBack = $stateParams.returnBack || '^.all.table';
+            $scope.returnBack = $stateParams.returnBack || ($scope.isPhone ? '^.all.list' : '^.all.table');
             //console.log($scope.returnBack);
             var data = {
                 gender: 0,
