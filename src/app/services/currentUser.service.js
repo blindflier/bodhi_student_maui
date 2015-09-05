@@ -35,17 +35,12 @@ angular.module('bodhiStudentAui')
             token = null;
         };
         user.permissions = function() {
-            return (token && token.user) ?
-                token.user.permissions : [];
+            return (token && token.student) ?
+                token.student.permissions : [];
         };
         user.username = function() {
-            if (token) {
-                if (token.user)
-                    return token.user.username;
-                else {
-                    if (token.student)
-                        return token.student.bud_name || token.student.name;
-                }
+            if (token && token.student) {
+                return token.student.username;
             }
             return '';
         };

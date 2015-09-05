@@ -43,36 +43,36 @@ angular.module('bodhiStudentAui')
                p.checked = false;
                $scope.reloadPermissions();
             }
-            //user model
-            $scope.userModel = $scope.$new();
-            $scope.userModel.limit = 'all';
-            $scope.userModel.$on('ModelLoaded', function(event, models) {
-                $scope.userModel.models = models;
+            //student model
+            $scope.studentModel = $scope.$new();
+            $scope.studentModel.limit = 'all';
+            $scope.studentModel.$on('ModelLoaded', function(event, models) {
+                $scope.studentModel.models = models;
                 var selected = [];
                 models.forEach(function(m){
-                    $scope.model.users.forEach(function(u){
+                    $scope.model.students.forEach(function(u){
                         if (m.id === u.id){
                            m.checked = true;
                            selected.push(m);
                         }
                      });
                 });
-               $scope.model.users = selected;   
+               $scope.model.students = selected;   
             });
-            ModelHelper.loadModels(User, $scope.userModel, true)();
+            ModelHelper.loadModels(Student, $scope.studentModel, true)();
 
-            $scope.reloadUsers = function() {
-                $scope.model.users = [];
-                $scope.userModel.models.forEach(function(u) {
+            $scope.reloadStudents = function() {
+                $scope.model.students = [];
+                $scope.studentModel.models.forEach(function(u) {
                     if (u.checked) {
-                        $scope.model.users.push(u);
+                        $scope.model.students.push(u);
                     }
                 });
             };
 
-            $scope.removeUser = function(u){
+            $scope.removeStudent = function(u){
                u.checked = false;
-               $scope.reloadUsers();
+               $scope.reloadStudents();
             }
 
 

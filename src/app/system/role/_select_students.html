@@ -1,9 +1,9 @@
-<div class="modal" ui-if='select_user' ui-state='select_user'>
+<div class="modal" ui-if='select_student' ui-state='select_student'>
     <div class="modal-backdrop in"></div>
     <div class="modal-dialog fullheight">
         <div class="modal-content fullheight">
             <div class="modal-header">
-                <button class="close" ui-turn-off="select_user">&times;</button>
+                <button class="close" ui-turn-off="select_student">&times;</button>
                 <h4 class="modal-title">分配用户</h4>
             </div>
             <div class="section">
@@ -34,8 +34,8 @@
                 </ul>
             </div>
             <div class="modal-footer">
-                <button ui-turn-off="select_user" class="btn btn-default">关闭</button>
-                <button ui-turn-off="select_user" class="btn btn-primary" ng-click="reloadUsers()">确定</button>
+                <button ui-turn-off="select_student" class="btn btn-default">关闭</button>
+                <button ui-turn-off="select_student" class="btn btn-primary" ng-click="reloadStudents()">确定</button>
             </div>
         </div>
     </div>

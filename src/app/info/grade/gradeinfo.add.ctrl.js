@@ -7,7 +7,7 @@ angular.module('bodhiStudentAui')
 
             $scope.cities = Cities;
             $scope.types = GradeTypes;
-            $scope.idPattern = /^[A-Z]{3}\-[A-Z]\d{4}$/;
+            //$scope.idPattern = /^[A-Z]{3}\-[A-Z]\d{4}$/;
             $scope.model = {};
 
             var data = {

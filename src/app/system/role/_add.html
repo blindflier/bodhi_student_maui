@@ -34,13 +34,13 @@
             </div>
         </fieldset>
         <fieldset>
-            <legend>分配用户 <a ui-turn-on="select_user" class="btn btn-default pull-right"><i class="fa fa-plus"></i>添加</a></legend>
+            <legend>分配学员 <a ui-turn-on="select_student" class="btn btn-default pull-right"><i class="fa fa-plus"></i>添加</a></legend>
            
             <div class="container">
             <div class="row"> 
-                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.users">
+                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.students">
                 <a class="btn  btn-block btn-info ">
-                    {{u.username}} <i ng-click="removeUser(u)" class="fa fa-remove pull-right"></i></a>  
+                    {{u.username}} <i ng-click="removeStudent(u)" class="fa fa-remove pull-right"></i></a>  
                 </div>
             </div>
             </div>
@@ -53,6 +53,6 @@
 
      <div ui-content-for="modals">
         <div ng-include src="'/app/system/role/_select_permissions.html'"></div>
-         <div ng-include src="'/app/system/role/_select_users.html'"></div>
+         <div ng-include src="'/app/system/role/_select_students.html'"></div>
     </div>
 </div>

@@ -12,10 +12,8 @@ angular.module('bodhiStudentAui')
                 CurrentUser.logout();
                 $state.go('login');
             };
-            $scope.user = {
-                username: CurrentUser.username()
-            };
-
+    
+            $scope.username = CurrentUser.username();
 
         }
     ]);

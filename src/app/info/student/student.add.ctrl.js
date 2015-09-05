@@ -12,7 +12,6 @@ angular.module('bodhiStudentAui')
             $scope.states = States;
             $scope.educations = Educations;
             $scope.grades = [];
-            $scope.idPattern = /^\d{16}$/;
             $scope.model = {
                 city: '南京'
             };

@@ -22,7 +22,7 @@ angular.module('bodhiStudentAui')
                 text: '基本信息',
                 icon: 'fa-info',
                 state: 'info',
-                permissions: ['SYSTEM_ADMIN'],
+                permissions: ['BASICINFO_ADMIN'],
                 children: [{
                     text: '班级基本信息',
                     icon: 'fa-university',
@@ -64,7 +64,7 @@ angular.module('bodhiStudentAui')
                     text: '课程管理',
                     icon: 'fa-book',
                     state: 'study.course',
-                    permissions: ['SYSTEM_ADMIN','STUDY_ADMIN'],
+                    permissions: ['STUDY_ADMIN'],
                     children: [{
                         text: '所有课程',
                         icon: 'fa-search',
@@ -78,7 +78,7 @@ angular.module('bodhiStudentAui')
                     text: '班级共修',
                     icon: 'fa-calendar',
                     state: 'study.gongxiu',
-                    permissions: ['SYSTEM_ADMIN','STUDY_ADMIN','STUDY_GONGXIU_ADMIN'],
+                    permissions: ['STUDY_ADMIN','STUDY_GONGXIU_ADMIN'],
                     children: [{
                         text: '所有共修',
                         icon: 'fa-search',
