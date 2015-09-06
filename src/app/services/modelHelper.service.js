@@ -84,6 +84,7 @@ angular.module('bodhiStudentAui')
                 };
                 //console.dir(scope);
                 angular.extend(option, scope.search);
+                angular.extend(option, scope.order);
 
 
                 RestModelService.get(option, function(resp) {

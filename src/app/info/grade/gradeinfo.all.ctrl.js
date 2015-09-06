@@ -7,7 +7,7 @@ angular.module('bodhiStudentAui')
 
       $scope.cities = AllCities;
       $scope.city = $scope.cities[0];
-    
+      $scope.order = {'order':'seq asc'};
       $scope.loadModels = ModelHelper.loadModels(Grade,$scope);
       $scope.onUpdate = ModelHelper.updateModel();
       $scope.destroyModel = ModelHelper.destroyModel($scope,Grade);
