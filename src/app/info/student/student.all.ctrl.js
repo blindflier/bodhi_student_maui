@@ -8,7 +8,7 @@ angular.module('bodhiStudentAui')
 
             $scope.cities = AllCities;
             $scope.states = [{lbl:'所有',val:-1}].concat(States);
-            $scope.limit = 1;
+            $scope.limit = 15;
             //console.log($state.current.name);
             $scope.search = {
                 'city': $scope.cities[0],
