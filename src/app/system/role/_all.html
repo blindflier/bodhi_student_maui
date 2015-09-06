@@ -3,7 +3,6 @@
         <div class="container">
             <div class="row">
                 <a class="btn btn-primary col-xs-4 col-md-2" ui-sref="^.add"><i class="fa fa-plus"></i> 增加角色</a>
-                
             </div>
             <hr>
         </div>
@@ -33,8 +32,6 @@
                         <td>{{c.name}}</td>
                         <td>{{c.code}}</td>
                         <td>{{c.code}}</td>
-          
-   
                         <td class="text-right"><a class="btn btn-small btn-primary" ng-click="onUpdate(c)"><i class="fa  fa-edit"></i>编辑</a>
                             <a class="btn btn-small btn-default" ng-click="destroyModel(c,c.name+'('+c.code+')')"><i class="fa fa-trash"></i>删除</a>
                         </td>
@@ -43,8 +40,8 @@
             </table>
             <div my-pagination total="pages" current="currentPage" onpage="loadModels(page)"></div>
         </div>
-        <div ui-content-for="modals">
-            <div ng-if="confirmData.show" my-confirm data="confirmData"></div>
-        </div>
     </div>
+</div>
+<div ui-content-for="modals">
+    <div ng-if="confirmData.show" my-confirm data="confirmData"></div>
 </div>

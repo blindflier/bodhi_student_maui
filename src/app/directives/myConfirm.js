@@ -8,6 +8,6 @@ angular.module('bodhiStudentAui')
       data: '='
     }, 
     restrict: 'EAC', // E = Element, A = Attribute, C = Class, M = Comment
-    templateUrl: '/app/directives/myConfirm.temp.html',
+    templateUrl: 'app/directives/myConfirm.temp.html',
   };
 }]);

@@ -3,14 +3,11 @@
         <div class="container">
             <div class="row">
                 <a class="btn btn-primary col-xs-4 col-md-2" ui-sref="^.add"><i class="fa fa-plus"></i> 增加课程</a>
-
                 <div class="col-xs-4 col-md-2 pull-right input-group">
-                   <input class="form-control" ng-model="search.search" ng-keypress="onEnter($event,loadModels,1)">
-                   <a class="input-group-addon" ng-click="loadModels(1)"><i class="fa fa-search"></i></a>
+                    <input class="form-control" ng-model="search.search" ng-keypress="onEnter($event,loadModels,1)">
+                    <a class="input-group-addon" ng-click="loadModels(1)"><i class="fa fa-search"></i></a>
                 </div>
-
-                 <div class="col-xs-4 col-md-2 pull-right input-group">
-                   
+                <div class="col-xs-4 col-md-2 pull-right input-group">
                     <select class="form-control" ng-model="search.category" ng-options="c for c in categories" ng-change="loadModels()">
                     </select>
                 </div>
@@ -45,7 +42,6 @@
                         <td>{{c.seq}}</td>
                         <td>{{c.subject}}</td>
                         <td>{{c.desc}}</td>
-   
                         <td class="text-right"><a class="btn btn-small btn-primary" ng-click="onUpdate(c)"><i class="fa  fa-edit"></i>编辑</a>
                             <a class="btn btn-small btn-default" ng-click="destroyModel(c,c.subject+'('+c.category+')')"><i class="fa fa-trash"></i>删除</a>
                         </td>
@@ -54,8 +50,8 @@
             </table>
             <div my-pagination total="pages" current="currentPage" onpage="loadModels(page)"></div>
         </div>
-        <div ui-content-for="modals">
-            <div ng-if="confirmData.show" my-confirm data="confirmData"></div>
-        </div>
     </div>
+</div>
+<div ui-content-for="modals">
+    <div ng-if="confirmData.show" my-confirm data="confirmData"></div>
 </div>

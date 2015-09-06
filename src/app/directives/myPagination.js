@@ -11,7 +11,7 @@ angular.module('bodhiStudentAui')
       onpage: '&'
     },
     restrict: 'EAC', 
-    templateUrl: '/app/directives/myPagination.temp.html',
+    templateUrl: 'app/directives/myPagination.temp.html',
 
     link: function(scope, iElm, iAttrs, controller) {
        

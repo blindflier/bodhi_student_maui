@@ -33,6 +33,7 @@ angular.module('bodhiStudentAui')
         user.logout = function() {
             StorageService.remove('token');
             token = null;
+            window.location = "/";
         };
         user.permissions = function() {
             return (token && token.student) ?

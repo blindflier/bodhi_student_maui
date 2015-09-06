@@ -3,17 +3,13 @@
         <div class="container">
             <div class="panel">
                 <div class="btn-group pull-right">
-                <a class="btn btn-small btn-default" ui-sref="info.student.all.list" ng-class="{'active':isState('info.student.all.list')}"  ><i class="fa fa-th-list"></i></a>
-                <a class="btn btn-small btn-default" ui-sref="info.student.all.table" ng-class="{'active':isState('info.student.all.table')}" ><i class="fa fa-table"></i></a>
+                    <a class="btn btn-small btn-default" ui-sref="info.student.all.list" ng-class="{'active':isState('info.student.all.list')}"><i class="fa fa-th-list"></i></a>
+                    <a class="btn btn-small btn-default" ui-sref="info.student.all.table" ng-class="{'active':isState('info.student.all.table')}"><i class="fa fa-table"></i></a>
                 </div>
-
-                <a class="btn btn-primary col-xs-4 col-md-2" ui-sref="^.add({returnBack:'{{currentState}}'})" ><i class="fa fa-plus"></i> 增加学员</a>&nbsp;
-                    
-
+                <a class="btn btn-primary col-xs-4 col-md-2" ui-sref="^.add({returnBack:'{{currentState}}'})"><i class="fa fa-plus"></i> 增加学员</a>&nbsp;
             </div>
             <div class="panel panel-default " ui-state="showSearchArea">
                 <div class="panel-heading" ui-toggle="showSearchArea">
-                    
                     <i class="fa pull-right" ui-class="{'fa-angle-double-down':!showSearchArea,'fa-angle-double-up':showSearchArea }"></i>
                     <h3 class="panel-title">搜索</h3>
                 </div>
@@ -52,8 +48,8 @@
     </div>
     <div class="container scrollable-content">
         <ui-view/>
-        <div ui-content-for="modals">
-            <div ng-if="confirmData.show" my-confirm data="confirmData"></div>
-        </div>
     </div>
+</div>
+<div ui-content-for="modals">
+    <div ng-if="confirmData.show" my-confirm data="confirmData"></div>
 </div>

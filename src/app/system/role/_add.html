@@ -10,39 +10,34 @@
             </div>
             <p>{{server.msgBody}}</p>
         </div>
-  
-        
-            <div class="form-group">
-                <label>名称<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" ng-model="model.name" required>
-            </div>
-            <div class="form-group" >
-                <label>描述</label>
-                <input type="text" class="form-control" ng-model="model.desc">
-            </div>
-      
+        <div class="form-group">
+            <label>名称<span class="text-danger">*</span></label>
+            <input type="text" class="form-control" ng-model="model.name" required>
+        </div>
+        <div class="form-group">
+            <label>描述</label>
+            <input type="text" class="form-control" ng-model="model.desc">
+        </div>
         <fieldset>
             <legend>分配权限 <a ui-turn-on="select_permission" class="btn btn-default  pull-right"><i class="fa fa-plus"></i>添加</a></legend>
-           
             <div class="container">
-            <div class="row"> 
-                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="p in model.permissions">
-                <a class="btn  btn-block btn-info ">
-                    {{p.name}} <i ng-click="removePermission(p)" class="fa fa-remove pull-right"></i></a>  
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="p in model.permissions">
+                        <a class="btn  btn-block btn-info ">
+                    {{p.name}} <i ng-click="removePermission(p)" class="fa fa-remove pull-right"></i></a>
+                    </div>
                 </div>
-            </div>
             </div>
         </fieldset>
         <fieldset>
             <legend>分配学员 <a ui-turn-on="select_student" class="btn btn-default pull-right"><i class="fa fa-plus"></i>添加</a></legend>
-           
             <div class="container">
-            <div class="row"> 
-                <div  class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.students">
-                <a class="btn  btn-block btn-info ">
-                    {{u.username}} <i ng-click="removeStudent(u)" class="fa fa-remove pull-right"></i></a>  
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-6 pull-left" style="margin-bottom:10px" ng-repeat="u in model.students">
+                        <a class="btn  btn-block btn-info ">
+                    {{u.username}} <i ng-click="removeStudent(u)" class="fa fa-remove pull-right"></i></a>
+                    </div>
                 </div>
-            </div>
             </div>
         </fieldset>
         <div class="form-group">
@@ -50,9 +45,8 @@
             <a ui-sref="^.all" class="btn btn-default btn-block">返回</a>
         </div>
     </form>
-
-     <div ui-content-for="modals">
-        <div ng-include src="'/app/system/role/_select_permissions.html'"></div>
-         <div ng-include src="'/app/system/role/_select_students.html'"></div>
-    </div>
+</div>
+<div ui-content-for="modals">
+    <div ng-include src="'app/system/role/_select_permissions.html'"></div>
+    <div ng-include src="'app/system/role/_select_students.html'"></div>
 </div>
