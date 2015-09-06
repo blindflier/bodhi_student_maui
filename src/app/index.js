@@ -152,7 +152,7 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                             model: {}
                         }
                     });
-            };
+            }
 
             function study_gongxiu() {
                 //班级管理
@@ -174,10 +174,10 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                     .state('study.gongxiu.all.table', {
                         url: '/table',
                         templateUrl: 'app/study/gongxiu/_all.table.html',
-                         controller: 'GongxiuAllTableCtrl'
+                        controller: 'GongxiuAllTableCtrl'
                     })
 
-                    .state('study.gongxiu.add', {
+                .state('study.gongxiu.add', {
                         url: '/add',
                         templateUrl: 'app/study/gongxiu/_add.html',
                         controller: 'GongxiuAddCtrl'
@@ -286,7 +286,7 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
         $rootScope.$on('$stateChangeStart', function(event, toState) {
 
             var tokenExpired = CurrentUser.tokenExpired();
-            if ( tokenExpired && toState.name !== 'login') {
+            if (tokenExpired && toState.name !== 'login') {
                 event.preventDefault();
                 $urlRouter.update(true);
                 $state.transitionTo('login');
@@ -310,7 +310,7 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
             return $state.is(s);
         };
 
-       
+
 
     }
 ])
