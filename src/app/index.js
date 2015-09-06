@@ -198,7 +198,7 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                             model: {}
                         }
                     });
-            };
+            }
 
             function info() {
                 $stateProvider.state('info', {
