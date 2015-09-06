@@ -5,7 +5,7 @@ angular.module('bodhiStudentAui')
         'RestHelper', 'Student', 'Cities', 'ModelHelper', 'Grade', 'Genders', 'Educations', 'States',
         'CurrentUser',
         function($scope, $timeout, $state, $stateParams, RestHelper, Student,
-            Cities, ModelHelper, Grade, Genders, Educations, States,CurrentUser) {
+            Cities, ModelHelper, Grade, Genders, Educations, States, CurrentUser) {
             $scope.isPhone = CurrentUser.isPhone();
             $scope.cities = Cities;
             $scope.genders = Genders;
@@ -15,7 +15,7 @@ angular.module('bodhiStudentAui')
             $scope.model = {
                 city: '南京'
             };
-       
+
             $scope.returnBack = $stateParams.returnBack || ($scope.isPhone ? '^.all.list' : '^.all.table');
             //console.log($scope.returnBack);
             var data = {
@@ -24,12 +24,12 @@ angular.module('bodhiStudentAui')
                 state: 0
             };
 
-            ModelHelper.initAdd($scope, '修改学员信息', '增加学员', $stateParams.model, data,$scope.returnBack);
-            $scope.submit = ModelHelper.submitModel(Student, $scope, data,$scope.returnBack);
+            ModelHelper.initAdd($scope, '修改学员信息', '增加学员', $stateParams.model, data, $scope.returnBack);
+            $scope.submit = ModelHelper.submitModel(Student, $scope, data, $scope.returnBack);
 
-            $scope.$on('afterSave',function(evt,d){
-                 $scope.model.city =  d.city;
-                 $scope.model.grade_id = d.grade_id;
+            $scope.$on('afterSave', function(evt, d) {
+                $scope.model.city = d.city;
+                $scope.model.grade_id = d.grade_id;
             });
 
             $scope.loadGrades = function() {
@@ -54,5 +54,28 @@ angular.module('bodhiStudentAui')
                 });
             };
             $scope.loadGrades();
+
+            $scope.changeName = function() {
+                if (!$scope.model.bud_name) {
+                    $scope.model.username = $scope.model.name;
+                }
+            };
+            $scope.changeBudName = function() {
+                $scope.model.username = $scope.model.bud_name;
+            };
+            $scope.changeStudentNumber = function() {
+                $scope.model.password = $scope.model.student_number;
+                $scope.onChangePassword();
+            };
+            $scope.onChangePassword = function() {
+                var l = $scope.model.password.length;
+                //console.log('onChangePassword ' + l);
+                if ($state.is('^.add')) {
+                    $scope.studentform.password.$setValidity('length', l >= 6);
+                }
+                if ($state.is('^.update')) {
+                    $scope.studentform.password.$setValidity('length', (l == 0 || l >= 6));
+                }
+            };
         }
     ]);

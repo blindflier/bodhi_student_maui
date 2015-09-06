@@ -6,7 +6,7 @@ angular.module('bodhiStudentAui')
     function($scope, $timeout, $state, Gongxiu,RestHelper,ModelHelper,
       CurrentUser) {
 
-      $scope.inGradeJail = !CurrentUser.isStudyGongxiuAdmin();
+      $scope.inGradeJail = !CurrentUser.isStudyAdmin();
       $scope.grade = CurrentUser.grade();
 
       $scope.search = {};
@@ -22,8 +22,9 @@ angular.module('bodhiStudentAui')
       $scope.destroyModel = ModelHelper.destroyModel($scope,Gongxiu);
 
       $scope.canCheckin = function(gongxiu){
-        if (!$scope.inGradeJail) 
-          return true;          
+        if (!$scope.inGradeJail || gongxiu.checkins.length == 0) 
+          return true;    
+ 
         var hold = new Date(Date.parse(gongxiu.holding_time));
         var start = moment(hold).subtract(1, 'hours');
         var end = moment(hold).add(1,'days').endOf('day');
@@ -31,8 +32,8 @@ angular.module('bodhiStudentAui')
       };
       
       $scope.canEdit = function  (gongxiu) {
-        if (!$scope.inGradeJail) 
-          return true;    
+       if (!$scope.inGradeJail || gongxiu.checkins.length == 0) 
+          return true;      
         var hold = new Date(Date.parse(gongxiu.holding_time));
         return moment().isBefore(moment(hold));
       };

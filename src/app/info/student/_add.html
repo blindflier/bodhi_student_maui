@@ -1,5 +1,5 @@
 <div class="container scrollable">
-    <form name="gradeform" class="form mt10 scrollable-content" method="post" ng-submit="submit()">
+    <form name="studentform" class="form mt10 scrollable-content" method="post" ng-submit="submit()">
         <h3>{{header}}</h3>
         <div ng-show="server.show" class="alert message-box mb10 alert-dismissible" ng-class="{'bg-success':server.success,'bg-danger':!server.success}">
             <button type="button" class="close" ng-click="server.show=false">
@@ -22,11 +22,11 @@
         </div>
         <div class="form-group">
             <label>学员ID<span class="text-danger">*</span></label>
-            <input class="form-control" name="studentid" ng-model="model.student_number"  required>
+            <input class="form-control" name="studentid" ng-model="model.student_number" ng-change="changeStudentNumber()" required>
         </div>
         <div class="form-group">
             <label>姓名<span class="text-danger">*</span></label>
-            <input class="form-control" ng-model="model.name" required>
+            <input class="form-control" ng-change="changeName()" ng-model="model.name" required>
         </div>
         <div class="form-group">
             <label>性别<span class="text-danger">*</span></label>
@@ -35,7 +35,15 @@
         </div>
         <div class="form-group">
             <label>法名</label>
-            <input class="form-control" ng-model="model.bud_name">
+            <input class="form-control" ng-change="changeBudName()" ng-model="model.bud_name">
+        </div>
+        <div class="form-group">
+            <label>登录名<span class="text-danger">*</span></label>
+            <input class="form-control" ng-model="model.username" required>
+        </div>
+         <div class="form-group">
+            <label>密码</label>
+            <input class="form-control" placeholder="留空不修改" name="password" ng-model="model.password" ng-change="onChangePassword()">
         </div>
         <div class="form-group">
             <label>电话</label>
@@ -63,7 +71,7 @@
             <select class="form-control" ng-model="model.state" ng-options="s.val as s.lbl for s in states"></select>
         </div>
         <div class="form-group">
-            <input type="submit" ng-disabled="gradeform.$invalid" class="btn btn-primary btn-block">
+            <input type="submit" ng-disabled="studentform.$invalid" class="btn btn-primary btn-block">
             <a ui-sref="{{returnBack}}" class="btn btn-default btn-block">返回</a>
         </div>
     </form>

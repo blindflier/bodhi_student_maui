@@ -3,27 +3,22 @@
 angular.module('bodhiStudentAui')
     .controller('GongxiuCheckinCtrl', ['$scope', '$timeout', '$state', '$stateParams',
         'RestHelper', 'Gongxiu', 'ModelHelper', 'CourseCategories', 'CurrentUser',
-        'Grade', 'CheckinCategories', 'Student',
+        'Grade', 'CheckinCategories', 'Student','Checkin',
         function($scope, $timeout, $state, $stateParams, RestHelper, Gongxiu,
-            ModelHelper, CourseCategories, CurrentUser, Grade, CheckinCategories, Student) {
+            ModelHelper, CourseCategories, CurrentUser, Grade, CheckinCategories, Student,Checkin) {
 
 
             $scope.returnBack = CurrentUser.isPhone() ? '^.all.list' : '^.all.table';
-            if (!$stateParams.model.grade_id) {
-                console.log('goto '+$scope.returnBack);
+            if (!$stateParams.model.checkins) {
+                //console.log('goto '+$scope.returnBack);
                 return $state.go($scope.returnBack);
             }
-            
 
+            $scope.server = {};
             $scope.gongxiu = $stateParams.model;
-            $scope.isAdmin = CurrentUser.isStudyGongxiuAdmin();
+            $scope.isAdmin = CurrentUser.isStudyAdmin();
             //console.dir($scope.gongxiu);
             $scope.checkinCategories = CheckinCategories;
-
-
-            $scope.model = {};
-
-
 
             $scope.setCheckinCategory = function(c, cc) {
                 c.checkinCategory = cc;
@@ -58,17 +53,31 @@ angular.module('bodhiStudentAui')
                 } else {
                     return {};
                 }
-            }
+            };
             $scope.loadStudents = function() {
                 Student.get({
                     grade_id: $stateParams.model.grade_id,
                     limit: 'all',
                     state: 0,
-                    order: 'student_id asc'
+                    order: 'student_number asc'
                 }, function(resp) {
                     $scope.students = resp.data;
+                    var clen = $scope.gongxiu.checkins.length;
+
                     angular.forEach($scope.students, function(s) {
-                        s.checkinCategory = '旷课';
+                         s.checkinCategory = '旷课';
+                        for(var i=0;i<clen;i++){
+                            var checkin = $scope.gongxiu.checkins[i];
+                            if (s.id == checkin.student_id){
+                                if (checkin.memo){
+                                     s.checkinMemo = checkin.memo;
+                                     s.showDetail = true;     
+                                };
+                               
+                                s.checkinCategory = checkin.category;
+                                break;
+                            }
+                        } 
                     });
                 }, function(err) {
                     console.log(err);
@@ -76,20 +85,26 @@ angular.module('bodhiStudentAui')
             };
             $scope.loadStudents();
 
-
-            $scope.submit = function(){
-                var data = {};
-                data.gongxiu_id = $scope.gongxiu.id;
-                data.checkin = [];
-                angular.forEach($scope.students, function(student){
+            $scope.submit = function() {
+                var data  = {
+                    gid : $scope.gongxiu.id,
+                    checkins: []
+                };
+                angular.forEach($scope.students, function(student) {
                     var c = {
-                        'student_id' : student.id,
-                        'category' : student.checkinCategory,
+                        'student_id': student.id,
+                        'category': student.checkinCategory,
                         'memo': student.checkinMemo
                     };
-                    data.checkin.push(c);
+                    data.checkins.push(c);
                 });
-                
+               RestHelper.restCall({
+                    'promise': Checkin.save(data).$promise,
+                    'callback': function() {
+                       $state.go($scope.returnBack);
+                    },
+                    'server': $scope.server
+                });
             };
 
         }

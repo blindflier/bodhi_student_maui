@@ -34,7 +34,7 @@ angular.module('bodhiStudentAui')
                 format: 'YYYY/MM/DD HH:mm'
             };
            
-            $scope.inGradeJail = !CurrentUser.isStudyGongxiuAdmin();
+            $scope.inGradeJail = !CurrentUser.isStudyAdmin();
 
             if($stateParams.model && $stateParams.model.holding_time){
               $stateParams.model.holding_time = new Date($stateParams.model.holding_time);         

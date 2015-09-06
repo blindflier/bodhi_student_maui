@@ -78,17 +78,17 @@ angular.module('bodhiStudentAui')
                     text: '班级共修',
                     icon: 'fa-calendar',
                     state: 'study.gongxiu',
-                    permissions: ['STUDY_ADMIN','STUDY_GONGXIU_ADMIN'],
+                    permissions: ['STUDY_ADMIN'],
                     children: [{
                         text: '所有共修',
                         icon: 'fa-search',
                         state:  $scope.isPhone? 'study.gongxiu.all.list' : 'study.gongxiu.all.table',
-                        permissions: ['STUDY_GONGXIU_ADMIN_MY']
+                        permissions: ['STUDY_CLASS_ADMIN']
                     }, {
                         text: '增加共修',
                         icon: 'fa-plus-circle',
                         state: 'study.gongxiu.add',
-                        permissions: ['STUDY_GONGXIU_ADMIN_MY']
+                        permissions: ['STUDY_CLASS_ADMIN']
                     }]
                 }]
             };
@@ -98,20 +98,6 @@ angular.module('bodhiStudentAui')
                 state: 'system',
                 permissions: ['SUPER_ADMIN'],
                 children: [{
-                    text: '用户管理',
-                    icon: 'fa-user',
-                    state: 'system.user',
-                    permissions: ['SYSTEM_ADMIN'],
-                    children: [{
-                        text: '所有用户',
-                        icon: 'fa-search',
-                        state: 'system.user.all'
-                    }, {
-                        text: '增加用户',
-                        icon: 'fa-plus-circle',
-                        state: 'system.user.add'
-                    }]
-                }, {
                     text: '角色管理',
                     icon: 'fa-group',
                     state: 'system.role',

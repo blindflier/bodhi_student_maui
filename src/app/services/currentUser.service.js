@@ -51,9 +51,9 @@ angular.module('bodhiStudentAui')
 
   
 
-        user.isStudyGongxiuAdmin = function (argument) {
+        user.isStudyAdmin = function (argument) {
             return havePermission(user.permissions(),[
-                'SUPER_ADMIN', 'SYSTEM_ADMIN', 'STUDY_ADMIN', 'STUDY_GONGXIU_ADMIN'
+                'SUPER_ADMIN', 'SYSTEM_ADMIN', 'STUDY_ADMIN'
             ]);
         }
 

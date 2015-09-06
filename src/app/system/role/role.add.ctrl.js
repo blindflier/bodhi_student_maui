@@ -2,11 +2,15 @@
 
 angular.module('bodhiStudentAui')
     .controller('RoleAddCtrl', ['$scope', '$timeout', '$state', '$stateParams',
-        'RestHelper', 'Role', 'ModelHelper', 'Permission','User',
-        function($scope, $timeout, $state, $stateParams, RestHelper, Role, ModelHelper, Permission,User) {
+        'RestHelper', 'Role', 'ModelHelper', 'Permission','Student',
+        function($scope, $timeout, $state, $stateParams, RestHelper, Role, ModelHelper, Permission,Student) {
 
+            $scope.model = {
+                students: [],
+                permissions: []
+            };
             ModelHelper.initAdd($scope, '修改角色', '增加角色', $stateParams.model, {
-                users: [],
+                students: [],
                 permissions: []
             });
             $scope.submit = ModelHelper.submitModel(Role, $scope);
@@ -44,37 +48,28 @@ angular.module('bodhiStudentAui')
                $scope.reloadPermissions();
             }
             //student model
-            $scope.studentModel = $scope.$new();
+            $scope.studentModel = {}; //$scope.$new();
             $scope.studentModel.limit = 'all';
-            $scope.studentModel.$on('ModelLoaded', function(event, models) {
-                $scope.studentModel.models = models;
-                var selected = [];
-                models.forEach(function(m){
-                    $scope.model.students.forEach(function(u){
-                        if (m.id === u.id){
-                           m.checked = true;
-                           selected.push(m);
-                        }
-                     });
-                });
-               $scope.model.students = selected;   
-            });
-            ModelHelper.loadModels(Student, $scope.studentModel, true)();
 
-            $scope.reloadStudents = function() {
-                $scope.model.students = [];
-                $scope.studentModel.models.forEach(function(u) {
-                    if (u.checked) {
-                        $scope.model.students.push(u);
-                    }
-                });
+            var loadStudents = ModelHelper.loadModels(Student,$scope.studentModel,false);
+            $scope.loadStudents = function(){
+                if ($scope.studentModel.search.username == '')
+                    return;
+                loadStudents(1);
+            };
+
+            $scope.onSelectStudent = function() {
+                if ($scope.studentModel.selectedStudent)
+                    $scope.model.students.push($scope.studentModel.selectedStudent);
             };
 
             $scope.removeStudent = function(u){
-               u.checked = false;
-               $scope.reloadStudents();
+               _.remove($scope.model.students,function(s){
+                    return s.id == u.id
+               });
             }
 
+           
 
         }
     ]);
