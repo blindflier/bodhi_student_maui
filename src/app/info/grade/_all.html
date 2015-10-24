@@ -38,8 +38,10 @@
                         <td>{{c.code}}</td>
                         <td>{{c.genre}}</td>
                         <td>{{c.seq}}</td>
-                        <td class="text-right"><a class="btn btn-small btn-primary" ng-click="onUpdate(c)"><i class="fa  fa-edit"></i>编辑</a>
-                            <a class="btn btn-small btn-default" ng-click="destroyModel(c,c.city + c.genre + c.seq)"><i class="fa fa-trash"></i>删除</a>
+                        <td class="text-right">
+<a class="btn btn-sm btn-info" ui-sref="info.student.all.table({grade:c})"><i class="fa  fa-eye"></i> 学员</a>
+                        <a class="btn btn-sm btn-primary" ng-click="onUpdate(c)"><i class="fa  fa-edit"></i> 编辑</a>
+                            <a class="btn btn-sm btn-default" ng-click="destroyModel(c,c.city + c.genre + c.seq)"><i class="fa fa-trash"></i> 删除</a>
                         </td>
                     </tr>
                 </tbody>

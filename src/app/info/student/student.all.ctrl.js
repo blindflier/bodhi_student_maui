@@ -2,9 +2,10 @@
 
 angular.module('bodhiStudentAui')
     .controller('StudentinfoAllCtrl', ['$scope', '$timeout', '$state',
-        'Student', 'RestHelper', 'AllCities', 'ModelHelper', 'Grade','States',
+        'Student', 'RestHelper', 'AllCities', 'ModelHelper', 'Grade',
+        'States','$stateParams',
         function($scope, $timeout, $state, Student, RestHelper, 
-            AllCities, ModelHelper, Grade,States) {
+            AllCities, ModelHelper, Grade,States,$stateParams) {
 
             $scope.cities = AllCities;
             $scope.states = [{lbl:'所有',val:-1}].concat(States);
@@ -13,6 +14,11 @@ angular.module('bodhiStudentAui')
             $scope.search = {
                 'city': $scope.cities[0],
                 'state': -1
+            };
+            if ($stateParams.grade){
+                $scope.search.city = $stateParams.grade.city;
+                $scope.search.grade_id = $stateParams.grade.id;
+
             };
             $scope.grades = [];
             $scope.models = [];

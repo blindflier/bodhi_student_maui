@@ -18,6 +18,11 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                     templateUrl: 'app/login/login.html',
                     controller: 'LoginCtrl'
                 })
+                 .state('error', {
+                    url: '/error',
+                    templateUrl: 'app/home/error.html',
+                    controller: 'HomeCtrl'
+                })
                 .state('home', {
                     url: '/home',
                     templateUrl: 'app/home/home.html',
@@ -34,7 +39,7 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                     url: '/system',
                     template: '<ui-view/>'
                 });
-                system_user();
+                //system_user();
                 system_role();
                 system_permission();
             }
@@ -248,7 +253,10 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                     .state('info.student.all', {
                         url: '/all',
                         templateUrl: 'app/info/student/_all.html',
-                        controller: 'StudentinfoAllCtrl'
+                        controller: 'StudentinfoAllCtrl',
+                        params: {
+                            grade: {}
+                        }
                     })
                     .state('info.student.all.table', {
                         url: '/table',
@@ -266,6 +274,14 @@ angular.module('bodhiStudentAui', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanit
                         controller: 'StudentinfoAddCtrl',
                         params: {
                             returnBack: false
+                        }
+                    })
+                    .state('info.student.view', {
+                        url: '/view/:studentId',
+                        templateUrl: 'app/info/student/_view.html',
+                        controller: 'StudentinfoViewCtrl',
+                        params: {
+                            model: {}
                         }
                     })
                     .state('info.student.update', {
